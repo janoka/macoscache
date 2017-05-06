@@ -1,8 +1,14 @@
 # MacOS Cache to RAM disk
 
+## Goal of the Script
+
+Move all of the application caches to a RAM drive, because reading the file from RAM is much faster than from disk.
+
+I was inspired by Zafar Khaydarov's project: [OSX-RAMDisk](https://github.com/zafarella/OSX-RAMDisk). Many thanks for that!
+
 ## Installation
 
-Before the running please close all Applicaiton (like: Google Chrome).
+Before the running please close all applicaiton (like: Google Chrome).
 
 ```bash
 curl -sS https://raw.githubusercontent.com/janoka/macoscache/master/installer.sh | bash
@@ -11,6 +17,8 @@ macoscache
 ```
 
 ## Uninstall
+
+Please also close all application.
 
 ```bash
 curl -sS https://raw.githubusercontent.com/janoka/macoscache/master/uninstaller.sh | bash
