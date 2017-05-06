@@ -6,7 +6,7 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/bash</string>
-		<string>/usr/local/bin/startupRAMDiskandCacheMover.sh</string>
+		<string>/usr/local/bin/macoscache</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
