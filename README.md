@@ -2,8 +2,18 @@
 
 ## Installation
 
+Before the running please close all Applicaiton (like: Google Chrome).
+
 ```bash
 curl -sS https://raw.githubusercontent.com/janoka/macoscache/master/installer.sh | bash
+
+macoscache
+```
+
+## Uninstall
+
+```bash
+curl -sS https://raw.githubusercontent.com/janoka/macoscache/master/uninstaller.sh | bash
 ```
 
 ## Warnings
