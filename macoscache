@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Use only at own risk.
+# Inspired by Zafar Khaydarov, 
+# Geenral settings. Please replace the correct value.
+ramfs_size_mb=1024
+mount_point=$HOME/Library/Caches
+ramfs_size_sectors=$((${ramfs_size_mb}*1024*1024/512))
+ramdisk_device=`hdid -nomount ram://${ramfs_size_sectors}`
+
+# Closes passed as arg app by name
+close_app() {
+  osascript -e "quit app \"${1}\""
+}
+
+# Hide RamDisk directory
+hide_ramdisk() {
+  /usr/bin/chflags hidden ${mount_point}
+}
+
+# Creates RAM Disk.
+mk_ram_disk() {
+  # unmount if exists the RAM disk and mounts if doesn't
+  umount -f ${mount_point}
+  newfs_hfs -v 'ramdisk' ${ramdisk_device}
+  mkdir -p ${mount_point}
+  mount -o noatime -t hfs ${ramdisk_device} ${mount_point}
+
+  echo "created RAM disk."
+  # Hide RAM disk - we don't really need it to be annoiyng in finder.
+  # comment out should you need it.
+  hide_ramdisk
+  echo "RAM disk hidden"
+}
+
+main() {
+  rm -rf ${mount_point}
+  mkdir -p ${mount_point}
+  mk_ram_disk
+}
+
+main "$@"
